@@ -1,0 +1,20 @@
+include:
+  - project: 'pedroetb-projects/gitlab-ci-templates'
+    ref: master
+    file: '/packaging.yml'
+  - project: 'pedroetb-projects/gitlab-ci-templates'
+    ref: master
+    file: '/packaging-arm.yml'
+
+stages:
+  - pre-package
+  - package
+  - post-package
+
+.docker-operations-arm:
+  variables:
+    GOLANG_IMAGE_NAME: arm32v7/golang
+
+.docker-tag-dockerhub:
+  variables:
+    SOURCE_IMAGE_NAME: ${CI_PROJECT_NAMESPACE}/cadvisor

@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  cadvisor:
+    image: ${IMAGE_NAME:-pedroetb/cadvisor}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE:-Dockerfile}
+      args:
+        GOLANG_IMAGE_NAME:
+        GOLANG_IMAGE_TAG:
+        ALPINE_IMAGE_TAG:
+        CADVISOR_VERSION:
+        GIT_VERSION:
+        LIBC6_COMPAT_VERSION:
+        DEVICE_MAPPER_VERSION:
+        FINDUTILS_VERSION:
+        THIN_PROVISIONING_TOOLS_VERSION:
