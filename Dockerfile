@@ -7,7 +7,7 @@ ARG BUILD_PATH=/go/src/github.com/google/cadvisor
 FROM ${GOLANG_IMAGE_NAME}:${GOLANG_IMAGE_TAG} as build
 
 ARG GIT_VERSION=1:2.20.1-2
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 		git=${GIT_VERSION} \
 	&& rm -rf /var/lib/apt/lists/*
 
